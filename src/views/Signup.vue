@@ -19,6 +19,10 @@
         <div class="form-group">
           <label>Password:</label>
           <input type="password" class="form-control" v-model="password" />
+          <small
+            v-if="password.length > 0 && password.length < 6"
+            class="text-danger"
+          >Must be at least 6 characters</small>
         </div>
         <div class="form-group">
           <label>Password confirmation:</label>
