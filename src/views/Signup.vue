@@ -2,6 +2,7 @@
 
 <template>
   <div class="signup">
+    <img v-if="status" v-bind:src="`https://http.cat/${status}`" alt />
     <div class="container">
       <form v-on:submit.prevent="submit()">
         <h1>Signup</h1>
@@ -27,6 +28,10 @@
         <div class="form-group">
           <label>Password confirmation:</label>
           <input type="password" class="form-control" v-model="passwordConfirmation" />
+          <small
+            v-if="passwordConfirmation && passwordConfirmation != password"
+            class="text-danger"
+          >Password Confirmation does not match Password</small>
         </div>
         <input type="submit" class="btn btn-primary" value="Submit" />
       </form>
@@ -44,7 +49,8 @@ export default {
       email: "",
       password: "",
       passwordConfirmation: "",
-      errors: []
+      errors: [],
+      status: ""
     };
   },
   methods: {
@@ -62,6 +68,7 @@ export default {
         })
         .catch(error => {
           this.errors = error.response.data.errors;
+          this.status = error.response.status;
         });
     }
   }

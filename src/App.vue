@@ -45,7 +45,8 @@
               data-toggle="dropdown"
               aria-haspopup="true"
               aria-expanded="false"
-            >Dropdown</a>
+              >Dropdown</a
+            >
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="#">Action</a>
               <a class="dropdown-item" href="#">Another action</a>
@@ -54,7 +55,13 @@
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+            <a
+              class="nav-link disabled"
+              href="#"
+              tabindex="-1"
+              aria-disabled="true"
+              >Disabled</a
+            >
           </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
@@ -64,7 +71,9 @@
             placeholder="Search"
             aria-label="Search"
           />
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+            Search
+          </button>
         </form>
       </div>
     </nav>
@@ -80,3 +89,21 @@ li {
   list-style: none;
 }
 </style>
+
+<script>
+export default {
+  data: function() {
+    return {
+      jwt: null,
+    };
+  },
+  created: function() {
+    this.setJwt();
+  },
+  methods: {
+    setJwt: function() {
+      this.jwt = localStorage.jwt;
+    },
+  },
+};
+</script>
